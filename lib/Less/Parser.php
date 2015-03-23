@@ -170,7 +170,7 @@ class Less_Parser{
 	public function getCss(){
 
 		$precision = ini_get('precision');
-		@ini_set('precision',16);
+		/* @ini_set('precision',16); */
 		$locale = setlocale(LC_NUMERIC, 0);
 		setlocale(LC_NUMERIC, "C");
 
@@ -208,7 +208,7 @@ class Less_Parser{
         	}
 
 		//reset php settings
-		@ini_set('precision',$precision);
+		/* @ini_set('precision',$precision); */
 		setlocale(LC_NUMERIC, $locale);
 
 		// Rethrow exception after we handled resetting the environment
@@ -468,14 +468,14 @@ class Less_Parser{
 	private function _parse( $file_path = null ){
 		if (ini_get("mbstring.func_overload")) {
 			$mb_internal_encoding = ini_get("mbstring.internal_encoding");
-			@ini_set("mbstring.internal_encoding", "ascii");
+			/* @ini_set("mbstring.internal_encoding", "ascii"); */ 
 		}
 
 		$this->rules = array_merge($this->rules, $this->GetRules( $file_path ));
 
 		//reset php settings
 		if (isset($mb_internal_encoding)) {
-			@ini_set("mbstring.internal_encoding", $mb_internal_encoding);
+			/* @ini_set("mbstring.internal_encoding", $mb_internal_encoding); */
 		}
 	}
 
